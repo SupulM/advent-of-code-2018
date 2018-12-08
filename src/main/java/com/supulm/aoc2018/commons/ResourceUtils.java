@@ -1,4 +1,4 @@
-package com.supulm.aoc2018.util;
+package com.supulm.aoc2018.commons;
 
 import java.io.File;
 
