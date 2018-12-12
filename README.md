@@ -7,4 +7,4 @@ I used Java, Maven and JUnit as basic tools for providing solutions for these ch
 
 Day 1 : ⭐️ ⭐️
 
-Day 2 : 
+Day 2 : ⭐️ ⭐️
