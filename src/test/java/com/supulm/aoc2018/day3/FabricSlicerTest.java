@@ -17,7 +17,7 @@ class FabricSlicerTest {
 
     @BeforeEach
     void setUp() {
-        String filePath = ResourceUtils.getInstance().getFileName("day3.txt");
+        String filePath = ResourceUtils.getInstance().getFileName("day3-luke.txt");
         this.actualData = LineReader.getInstance().readLines(String.class, filePath);
     }
 
@@ -29,6 +29,6 @@ class FabricSlicerTest {
 
     @Test
     void testMultipleClaimedAreaWithActualData() {
-        assertEquals(104241, fabricSlicer.processAndGetArea(this.actualData));
+        assertEquals(124850, fabricSlicer.processAndGetArea(this.actualData));
     }
 }

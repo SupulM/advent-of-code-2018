@@ -1,6 +1,6 @@
 package com.supulm.aoc2018.day3;
 
-public class Specification {
+public class Claim {
 
     private String id;
 
@@ -9,7 +9,7 @@ public class Specification {
     private int width;
     private int height;
 
-    public Specification(String id, int spaceLeft, int spaceTop, int width, int height) {
+    public Claim(String id, int spaceLeft, int spaceTop, int width, int height) {
         this.id = id;
         this.spaceLeft = spaceLeft;
         this.spaceTop = spaceTop;
