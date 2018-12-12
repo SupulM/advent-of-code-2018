@@ -28,8 +28,20 @@ class InventoryManagementTest {
         assertEquals(12, management.checkSum(new ArrayList<>(Arrays.asList(data))));
     }
 
+    // Day 2, Part 1
     @Test
     void testCheckSumWithActualData() {
         assertEquals(9633, management.checkSum(this.actualData));
+    }
+
+    // Day 2, Part 2
+    @Test
+    void testBoxesThatDifferFromOneLetterWithActualData() {
+        assertEquals("lujnogabetpmsydyfcovzixaw", management.getBoxesDifferFromOneLetter(this.actualData));
+    }
+
+    @Test
+    void testCommonStringBuilder() {
+        assertEquals("fghj", management.getCommonLetters("fghuj", "fghij"));
     }
 }
