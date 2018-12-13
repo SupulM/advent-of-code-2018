@@ -12,7 +12,7 @@ public class FabricSlicer {
         this.initializeFabric();
     }
 
-    public int processAndGetArea(ArrayList<String> data) {
+    public String processAndGetArea(ArrayList<String> data) {
         processTextData(data);
         for (Claim claim : this.claims) {
             for (int i = claim.getSpaceTop(); i < (claim.getSpaceTop() + claim.getHeight()); i++) {
@@ -20,41 +20,48 @@ public class FabricSlicer {
                     if ((this.fabric.get(i).get(j)).equals(".")) {
                         this.fabric.get(i).set(j, claim.getId());
                     } else {
+                        if (!(this.fabric.get(i).get(j)).equals("x")) {
+                            // TODO try to improve this using lambdas aka possible removal of getClaimById
+                            getClaimById(this.fabric.get(i).get(j)).setIntact(false);
+                        }
                         this.fabric.get(i).set(j, "x");
+                        claim.setIntact(false);
                     }
                 }
             }
         }
 
-        return getMultipleClaimedArea();
+        return getMultipleClaimedArea() + ", " + getIntactClaimId();
     }
 
-    public String getIntactClaimId(ArrayList<String> data) {
-        processAndGetArea(data);
+    public String getIntactClaimId() {
         for (Claim claim : this.claims) {
-            for (int i = claim.getSpaceTop(); i < (claim.getSpaceTop() + claim.getHeight()); i++) {
-                for (int j = claim.getSpaceLeft(); j < (claim.getSpaceLeft() + claim.getWidth()); j++) {
-                    if (Objects.equals(this.fabric.get(i).get(j), "")) {
-
-                    }
-                }
+            if (claim.isIntact()) {
+                return claim.getId();
             }
         }
-        return "";
+        return null;
+    }
+
+    public Claim getClaimById(String id) {
+        for (Claim claim : this.claims) {
+            if (claim.getId().equals(id)){
+                return claim;
+            }
+        }
+        return null;
     }
 
     public int getMultipleClaimedArea() {
         int area = 0;
-        for (int i = 0; i < this.fabric.size(); i++) {
-            for (int j = 0; j < this.fabric.get(i).size(); j++) {
-                if ((this.fabric.get(i).get(j)).equals("x")) area++;
+        for (ArrayList<String> row : this.fabric) {
+            for (String cell : row) {
+                if (cell.equals("x")) area++;
             }
         }
         return area;
     }
 
-
-    // Sample string - #8 @ 557,190: 19x17
     public void processTextData(ArrayList<String> lines) {
         for (String line : lines) {
             String stripped = line.replaceAll("\\s+", "");

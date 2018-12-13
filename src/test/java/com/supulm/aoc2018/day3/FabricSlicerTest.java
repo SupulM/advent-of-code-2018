@@ -17,18 +17,18 @@ class FabricSlicerTest {
 
     @BeforeEach
     void setUp() {
-        String filePath = ResourceUtils.getInstance().getFileName("day3-luke.txt");
+        String filePath = ResourceUtils.getInstance().getFileName("day3.txt");
         this.actualData = LineReader.getInstance().readLines(String.class, filePath);
     }
 
     @Test
     void testLineProcessing() {
         ArrayList<String> data = new ArrayList<>(Arrays.asList("#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4", "#3 @ 5,5: 2x2"));
-        assertEquals(4, fabricSlicer.processAndGetArea(data));
+        assertEquals("4, 3", fabricSlicer.processAndGetArea(data));
     }
 
     @Test
     void testMultipleClaimedAreaWithActualData() {
-        assertEquals(124850, fabricSlicer.processAndGetArea(this.actualData));
+        assertEquals("104241, 806", fabricSlicer.processAndGetArea(this.actualData));
     }
 }

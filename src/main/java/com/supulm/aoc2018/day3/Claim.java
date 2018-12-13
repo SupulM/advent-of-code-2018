@@ -3,6 +3,7 @@ package com.supulm.aoc2018.day3;
 public class Claim {
 
     private String id;
+    private boolean isIntact = true;
 
     private int spaceLeft;
     private int spaceTop;
@@ -15,6 +16,14 @@ public class Claim {
         this.spaceTop = spaceTop;
         this.width = width;
         this.height = height;
+    }
+
+    public boolean isIntact() {
+        return isIntact;
+    }
+
+    public void setIntact(boolean intact) {
+        isIntact = intact;
     }
 
     public String getId() {
